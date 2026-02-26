@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import {
 	BookOpen, Map, CheckCircle2, TrendingUp,
-	AlertTriangle, Target, ArrowRight, Zap, Shield
+	Target, ArrowRight, Zap
 } from 'lucide-react'
 
 import ProgressRing from '../components/ProgressRing'
@@ -23,33 +23,6 @@ export default function Dashboard() {
 		m => m.tasks.some(t => !t.done)
 	)
 
-	// Calcul du risque basé sur la progression attendue vs réelle
-	const now = new Date()
-	const start = new Date('2026-02-26')
-	const end = new Date('2026-03-12') // Objectif : 2 semaines
-	const totalDays = (end - start) / (1000 * 60 * 60 * 24)
-	const elapsed = Math.max(0, (now - start) / (1000 * 60 * 60 * 24))
-	const expectedProgress = (elapsed / totalDays) * 100
-	const progressDelta = progressPercent - expectedProgress
-
-	let riskLevel, riskColor, riskIcon, riskMessage
-	if (progressDelta >= 0) {
-		riskLevel = 'En Bonne Voie'
-		riskColor = 'text-success-400'
-		riskIcon = <Shield className="w-5 h-5 text-success-400" />
-		riskMessage = "Vous êtes en avance. Gardez le rythme !"
-	} else if (progressDelta >= -15) {
-		riskLevel = 'Risque Léger'
-		riskColor = 'text-warning-400'
-		riskIcon = <AlertTriangle className="w-5 h-5 text-warning-400" />
-		riskMessage = "Légèrement en retard. Il est temps de rattraper !"
-	} else {
-		riskLevel = 'Risque Élevé'
-		riskColor = 'text-danger-400'
-		riskIcon = <AlertTriangle className="w-5 h-5 text-danger-400" />
-		riskMessage = "Très en retard. Concentrez-vous sur l'essentiel !"
-	}
-
 	const statCards = [
 		{
 			label: 'Jalons',
@@ -66,14 +39,6 @@ export default function Dashboard() {
 			icon: <CheckCircle2 className="w-5 h-5" />,
 			color: 'text-success-400',
 			bgColor: 'bg-success-500/15',
-		},
-		{
-			label: 'Niveau de Risque',
-			value: riskLevel,
-			sublabel: riskMessage,
-			icon: riskIcon,
-			color: riskColor,
-			bgColor: progressDelta >= 0 ? 'bg-success-500/15' : progressDelta >= -15 ? 'bg-warning-400/15' : 'bg-danger-400/15',
 		},
 	]
 
@@ -114,7 +79,7 @@ export default function Dashboard() {
 		<div className="space-y-6">
 
 			{/* Statistiques */}
-			<section className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+			<section className="grid grid-cols-1 sm:grid-cols-2 gap-4">
 				{statCards.map((card, i) => (
 					<div key={i} className="glass rounded-xl p-4 card-hover" style={{ animationDelay: `${i * 100}ms` }}>
 						<div className="flex items-center gap-3 mb-3">
