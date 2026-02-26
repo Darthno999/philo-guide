@@ -1,0 +1,432 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+body {
+	font-family: 'Inter', system-ui, -apple-system, sans-serif;
+	background: #07080f;
+	color: #d9dae3;
+	min-height: 100vh;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+	width: 6px;
+}
+
+::-webkit-scrollbar-track {
+	background: #0d0e1a;
+}
+
+::-webkit-scrollbar-thumb {
+	background: #363a5c;
+	border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background: #4a4e73;
+}
+
+/* Glass effect utility */
+.glass {
+	background: rgba(24, 26, 46, 0.6);
+	backdrop-filter: blur(12px);
+	border: 1px solid rgba(54, 58, 92, 0.4);
+}
+
+.glass-light {
+	background: rgba(38, 41, 68, 0.4);
+	backdrop-filter: blur(8px);
+	border: 1px solid rgba(54, 58, 92, 0.3);
+}
+
+/* Gradient text */
+.gradient-text {
+	background: linear-gradient(135deg, #54a0ff 0%, #2d7cf7 50%, #8bc1ff 100%);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	background-clip: text;
+}
+
+.gradient-text-warm {
+	background: linear-gradient(135deg, #facc15 0%, #f87171 100%);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	background-clip: text;
+}
+
+/* Glow effects */
+.glow-blue {
+	box-shadow: 0 0 20px rgba(45, 124, 247, 0.15), 0 0 60px rgba(45, 124, 247, 0.05);
+}
+
+.glow-green {
+	box-shadow: 0 0 20px rgba(34, 197, 94, 0.15), 0 0 60px rgba(34, 197, 94, 0.05);
+}
+
+.glow-red {
+	box-shadow: 0 0 20px rgba(239, 68, 68, 0.15), 0 0 60px rgba(239, 68, 68, 0.05);
+}
+
+/* Progress ring animation */
+@keyframes progressRing {
+	from {
+		stroke-dashoffset: var(--circumference);
+	}
+
+	to {
+		stroke-dashoffset: var(--offset);
+	}
+}
+
+.progress-ring-circle {
+	animation: progressRing 1.5s ease-out forwards;
+}
+
+/* Philosopher simulation styles */
+.philo-table {
+	position: relative;
+	width: 300px;
+	height: 300px;
+}
+
+.philosopher {
+	position: absolute;
+	width: 48px;
+	height: 48px;
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-weight: 600;
+	font-size: 14px;
+	cursor: pointer;
+	transition: all 0.3s ease;
+	z-index: 2;
+}
+
+.philosopher:hover {
+	transform: scale(1.1);
+}
+
+.philosopher.thinking {
+	background: linear-gradient(135deg, #363a5c, #262944);
+	border: 2px solid #4a4e73;
+	color: #8d90ab;
+}
+
+.philosopher.eating {
+	background: linear-gradient(135deg, #16a34a, #22c55e);
+	border: 2px solid #4ade80;
+	color: #fff;
+	box-shadow: 0 0 15px rgba(34, 197, 94, 0.4);
+}
+
+.philosopher.waiting {
+	background: linear-gradient(135deg, #ca8a04, #eab308);
+	border: 2px solid #facc15;
+	color: #fff;
+	box-shadow: 0 0 15px rgba(234, 179, 8, 0.4);
+}
+
+.philosopher.dead {
+	background: linear-gradient(135deg, #dc2626, #ef4444);
+	border: 2px solid #f87171;
+	color: #fff;
+	box-shadow: 0 0 15px rgba(239, 68, 68, 0.4);
+}
+
+.fork {
+	position: absolute;
+	width: 28px;
+	height: 28px;
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 16px;
+	transition: all 0.3s ease;
+	z-index: 1;
+}
+
+.fork.available {
+	background: rgba(54, 58, 92, 0.6);
+	border: 1px solid #4a4e73;
+}
+
+.fork.taken {
+	background: rgba(45, 124, 247, 0.3);
+	border: 1px solid #54a0ff;
+	box-shadow: 0 0 10px rgba(45, 124, 247, 0.3);
+}
+
+/* Card hover effect */
+.card-hover {
+	transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-hover:hover {
+	transform: translateY(-2px);
+	box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3), 0 0 20px rgba(45, 124, 247, 0.05);
+}
+
+/* Timeline */
+.timeline-line {
+	position: absolute;
+	left: 20px;
+	top: 0;
+	bottom: 0;
+	width: 2px;
+	background: linear-gradient(to bottom, #2d7cf7, #363a5c);
+}
+
+.timeline-dot {
+	position: absolute;
+	left: 14px;
+	width: 14px;
+	height: 14px;
+	border-radius: 50%;
+	border: 2px solid #2d7cf7;
+	background: #0d0e1a;
+	z-index: 1;
+}
+
+.timeline-dot.completed {
+	background: #2d7cf7;
+	box-shadow: 0 0 10px rgba(45, 124, 247, 0.4);
+}
+
+/* Checkbox */
+.custom-checkbox {
+	appearance: none;
+	width: 20px;
+	height: 20px;
+	border: 2px solid #4a4e73;
+	border-radius: 4px;
+	background: transparent;
+	cursor: pointer;
+	position: relative;
+	transition: all 0.2s ease;
+	flex-shrink: 0;
+}
+
+.custom-checkbox:checked {
+	background: #2d7cf7;
+	border-color: #2d7cf7;
+}
+
+.custom-checkbox:checked::after {
+	content: '✓';
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	color: white;
+	font-size: 12px;
+	font-weight: 700;
+}
+
+.custom-checkbox:focus-visible {
+	outline: 2px solid #54a0ff;
+	outline-offset: 2px;
+}
+
+/* Quiz option */
+.quiz-option {
+	transition: all 0.2s ease;
+	cursor: pointer;
+}
+
+.quiz-option:hover {
+	background: rgba(54, 58, 92, 0.5);
+	border-color: #54a0ff;
+}
+
+.quiz-option.selected {
+	background: rgba(45, 124, 247, 0.15);
+	border-color: #2d7cf7;
+}
+
+.quiz-option.correct {
+	background: rgba(34, 197, 94, 0.15);
+	border-color: #22c55e;
+}
+
+.quiz-option.incorrect {
+	background: rgba(239, 68, 68, 0.15);
+	border-color: #ef4444;
+}
+
+/* Textarea */
+textarea {
+	font-family: 'Inter', system-ui, sans-serif;
+}
+
+/* Focus styles for accessibility */
+a:focus-visible,
+button:focus-visible {
+	outline: 2px solid #54a0ff;
+	outline-offset: 2px;
+	border-radius: 4px;
+}
+
+/* Mobile sidebar overlay */
+.sidebar-overlay {
+	position: fixed;
+	inset: 0;
+	background: rgba(7, 8, 15, 0.7);
+	z-index: 40;
+	backdrop-filter: blur(4px);
+}
+
+/* ========================================
+   MOBILE / PWA OPTIMIZATIONS
+   Optimisé pour OnePlus 12 et smartphones
+   ======================================== */
+
+/* Safe area insets for notched/punch-hole phones */
+html {
+	padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+}
+
+/* Prevent pull-to-refresh in standalone PWA mode */
+@media (display-mode: standalone) {
+	body {
+		overscroll-behavior-y: contain;
+	}
+}
+
+/* Prevent text selection on interactive elements (app-like feel) */
+button,
+.philosopher,
+.quiz-option,
+.card-hover,
+.custom-checkbox {
+	-webkit-user-select: none;
+	user-select: none;
+	-webkit-tap-highlight-color: transparent;
+}
+
+/* Active state for touch (haptic feedback feel) */
+button:active,
+.quiz-option:active,
+.card-hover:active {
+	transform: scale(0.97);
+	transition: transform 0.1s ease;
+}
+
+/* Smooth momentum scrolling on iOS */
+main,
+.overflow-y-auto {
+	-webkit-overflow-scrolling: touch;
+}
+
+/* Mobile-specific styles */
+@media (max-width: 768px) {
+
+	/* Larger touch targets for mobile */
+	.custom-checkbox {
+		width: 24px;
+		height: 24px;
+		min-width: 24px;
+		min-height: 24px;
+	}
+
+	.custom-checkbox:checked::after {
+		font-size: 14px;
+	}
+
+	/* Philosopher simulation — scale down for mobile */
+	.philosopher {
+		width: 44px;
+		height: 44px;
+	}
+
+	.fork {
+		width: 24px;
+		height: 24px;
+		font-size: 14px;
+	}
+
+	/* Quiz options — larger padding for touch */
+	.quiz-option {
+		padding: 16px !important;
+		min-height: 56px;
+	}
+
+	/* Timeline adjustments */
+	.timeline-line {
+		left: 16px;
+	}
+
+	.timeline-dot {
+		left: 10px;
+	}
+
+	/* No hover effects on touch devices */
+	.card-hover:hover {
+		transform: none;
+		box-shadow: none;
+	}
+
+	/* Glass effects lighter on mobile for performance */
+	.glass {
+		backdrop-filter: blur(8px);
+	}
+
+	.glass-light {
+		backdrop-filter: blur(4px);
+	}
+}
+
+/* Small phones */
+@media (max-width: 380px) {
+	.philosopher {
+		width: 38px;
+		height: 38px;
+	}
+
+	.fork {
+		width: 22px;
+		height: 22px;
+		font-size: 12px;
+	}
+}
+
+/* Dark status bar for PWA standalone */
+@media (display-mode: standalone) {
+	header.glass {
+		padding-top: max(0.5rem, env(safe-area-inset-top));
+	}
+
+	/* Bottom safe area for gesture navigation */
+	main {
+		padding-bottom: max(1rem, env(safe-area-inset-bottom));
+	}
+}
+
+/* Landscape on mobile */
+@media (max-height: 500px) and (orientation: landscape) {
+	header.glass {
+		height: 48px;
+	}
+}
+
+/* High-DPI screens (OnePlus 12 = 450+ PPI) */
+@media (-webkit-min-device-pixel-ratio: 3) {
+
+	.glass,
+	.glass-light {
+		border-width: 0.5px;
+	}
+}
