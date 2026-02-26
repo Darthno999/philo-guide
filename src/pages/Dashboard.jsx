@@ -3,7 +3,7 @@ import {
 	BookOpen, Map, CheckCircle2, TrendingUp,
 	AlertTriangle, Target, ArrowRight, Zap, Shield
 } from 'lucide-react'
-import CountdownTimer from '../components/CountdownTimer'
+
 import ProgressRing from '../components/ProgressRing'
 import { useLocalStorage } from '../hooks/useLocalStorage'
 import { defaultMilestones } from '../data/milestones'
@@ -112,10 +112,6 @@ export default function Dashboard() {
 
 	return (
 		<div className="space-y-6">
-			{/* Compte à rebours */}
-			<section className="glass rounded-2xl p-6 glow-blue">
-				<CountdownTimer />
-			</section>
 
 			{/* Statistiques */}
 			<section className="grid grid-cols-1 sm:grid-cols-3 gap-4">
