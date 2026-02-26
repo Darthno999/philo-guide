@@ -2,7 +2,7 @@
 	"name": "Philo Guide",
 	"short_name": "Philo",
 	"description": "Guide interactif pour le projet Philosophes 42",
-	"start_url": "/",
+	"start_url": ".",
 	"display": "standalone",
 	"background_color": "#07080f",
 	"theme_color": "#07080f",
